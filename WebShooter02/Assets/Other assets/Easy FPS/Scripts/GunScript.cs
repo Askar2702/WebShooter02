@@ -20,7 +20,7 @@ public class GunScript : MonoBehaviour {
 
 	[Header("Bullet properties")]
 	[Tooltip("Preset value to tell with how many bullets will our waepon spawn aside.")]
-	public float bulletsIHave = 20;
+	public float bulletsIHave = 20;	
 	[Tooltip("Preset value to tell with how much bullets will our waepon spawn inside rifle.")]
 	public float bulletsInTheGun = 5;
 	[Tooltip("Preset value to tell how much bullets can one magazine carry.")]
@@ -97,6 +97,12 @@ public class GunScript : MonoBehaviour {
 		CrossHairExpansionWhenWalking();
 
 
+	}
+
+
+	public void IncreaseBulletNumber(float newBullets)
+    {
+		bulletsIHave += newBullets;
 	}
 
 	/*
@@ -270,7 +276,6 @@ public class GunScript : MonoBehaviour {
 		currentRecoilZPos = Mathf.SmoothDamp(currentRecoilZPos, 0, ref velocity_z_recoil, recoilOverTime_z);
 		currentRecoilXPos = Mathf.SmoothDamp(currentRecoilXPos, 0, ref velocity_x_recoil, recoilOverTime_x);
 		currentRecoilYPos = Mathf.SmoothDamp(currentRecoilYPos, 0, ref velocity_y_recoil, recoilOverTime_y);
-
 	}
 
 

@@ -52,7 +52,6 @@ public class GunInventory : MonoBehaviour {
 		if(switchWeaponCooldown > 1.2f && Input.GetKey(KeyCode.LeftShift) == false){
 			Create_Weapon();
 		}
-
 	}
 
 
