@@ -5,6 +5,7 @@ using UnityEngine;
 public class AmmoPickup : MonoBehaviour
 {
     [SerializeField] float bulletsPickupNumber = 50;
+
     GunScript gunScript;
 
     public void OnTriggerEnter(Collider other)
@@ -13,6 +14,7 @@ public class AmmoPickup : MonoBehaviour
         {
             gunScript = FindObjectOfType<GunScript>();
             gunScript.IncreaseBulletNumber(bulletsPickupNumber);
+
             Destroy(gameObject);
         }
     }
