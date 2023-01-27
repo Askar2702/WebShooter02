@@ -323,6 +323,7 @@
 "Assets/Other assets/VolumetricLines/Scripts/VolumetricLineBehavior.cs"
 "Assets/Other assets/VolumetricLines/Scripts/VolumetricLineStripBehavior.cs"
 "Assets/Other assets/VolumetricLines/Scripts/VolumetricLineVertexData.cs"
+"Assets/Prefabs/Enemy/EnemyHealth.cs"
 "Assets/Prefabs/Pickups/Ammo Pickup/AmmoPickup.cs"
 -langversion:8.0
 
