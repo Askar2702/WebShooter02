@@ -282,16 +282,23 @@ public class PlayerMovementScript : MonoBehaviour {
 	 *Method that is called if the waepon hit animation has been triggered the first time via Q input
 	 *and if is, it will search for target and make damage
 	 */
-	IEnumerator MeeleAttackWeaponHit(){
+
+	EnemyHealth enemyHealth;
+	[SerializeField] float meleeDamage;
+
+	IEnumerator MeeleAttackWeaponHit()
+	{
 		if (Physics.Raycast (ray1, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray2, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray3, out hitInfo, 2f, ~ignoreLayer)
 			|| Physics.Raycast (ray4, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray5, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray6, out hitInfo, 2f, ~ignoreLayer)
 			|| Physics.Raycast (ray7, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray8, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray9, out hitInfo, 2f, ~ignoreLayer)) {
 			//Debug.DrawRay (bulletSpawn.position, bulletSpawn.forward + (bulletSpawn.right*0.2f), Color.green, 0.0f);
-			if (hitInfo.transform.tag=="Dummie") {
-				Transform _other = hitInfo.transform.root.transform;
-				if (_other.transform.tag == "Dummie") {
-					print ("hit a dummie");
-				}
+			enemyHealth = hitInfo.transform.GetComponent<EnemyHealth>();
+			if (enemyHealth != null) 
+			{
+				//Transform _other = hitInfo.transform.root.transform;
+
+				enemyHealth.TakeDamage(meleeDamage);
+
 				InstantiateBlood(hitInfo,false);
 			}
 		}
