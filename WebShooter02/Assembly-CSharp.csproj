@@ -73,6 +73,7 @@
     <Compile Include="Assets\BoostBank\BoostBank.cs" />
     <Compile Include="Assets\Other assets\VolumetricLines\Scripts\VolumetricLineBehavior.cs" />
     <Compile Include="Assets\Other assets\VolumetricLines\BuiltInRenderPipeline\ExampleScenes\ExampleScripts\VolumetricMultiLineBehavior.cs" />
+    <Compile Include="Assets\Prefabs\Pickups\FireRatePickup\FireRatePickup.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
