@@ -114,6 +114,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6715597239677735543, guid: ad8042bf098d10c42b7b6f7ccd03cf41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6716349297701834683, guid: ad8042bf098d10c42b7b6f7ccd03cf41, type: 3}
       propertyPath: m_Name
       value: FX_Pickup_Ammo_01

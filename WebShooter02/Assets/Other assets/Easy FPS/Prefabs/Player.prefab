@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 11415148}
   - component: {fileID: 11478776}
   - component: {fileID: 11414154}
+  - component: {fileID: 3603230180102836456}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -392,6 +393,19 @@ MonoBehaviour:
   beginPosition: {x: 40, y: 4}
   size: {x: 10, y: 12}
   weaponChanging: {fileID: 82784591334345954}
+--- !u!114 &3603230180102836456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b7196a083df8b4ca1855783cd6524e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 150
 --- !u!1 &196378
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] float health = 150f;
+    [SerializeField] float maxHealth = 150f;
+    [SerializeField] float currentHealth = 150f;
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        currentHealth -= damage;
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);           
         }
+    }
+
+    public void RestoreHealth()
+    {
+        currentHealth = maxHealth;
     }
 }
