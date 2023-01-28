@@ -49,9 +49,11 @@ public class GunInventory : MonoBehaviour {
 	void Update(){
 
 		switchWeaponCooldown += 1 * Time.deltaTime;
+		/*
 		if(switchWeaponCooldown > 1.2f && Input.GetKey(KeyCode.LeftShift) == false){
 			Create_Weapon();
 		}
+		*/
 	}
 
 
@@ -77,11 +79,13 @@ public class GunInventory : MonoBehaviour {
 	 * GunPlaceSpawner is child of Player gameObject, where the gun is going to spawn and transition to our
 	 * gun properties value.
 	 */
+
+	/*
 	void Create_Weapon(){
 
-		/*
-		 * Scrolling wheel waepons changing
-		 */
+		
+		 // Scrolling wheel waepons changing
+		 
 		if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Mouse ScrollWheel") > 0){
 			switchWeaponCooldown = 0;
 
@@ -101,9 +105,9 @@ public class GunInventory : MonoBehaviour {
 			StartCoroutine("Spawn",currentGunCounter);
 		}
 
-		/*
-		 * Keypad numbers
-		 */
+		
+		 // Keypad numbers
+		 
 		if(Input.GetKeyDown(KeyCode.Alpha1) && currentGunCounter != 0){
 			switchWeaponCooldown = 0;
 			currentGunCounter = 0;
@@ -114,9 +118,8 @@ public class GunInventory : MonoBehaviour {
 			currentGunCounter = 1;
 			StartCoroutine("Spawn",currentGunCounter);
 		}
-
 	}
-
+	*/
 	/*
 	 * This method is called from Create_Weapon() upon pressing arrow up/down or scrolling the mouse wheel,
 	 * It will check if we carry a gun and destroy it, and its then going to load a gun prefab from our Resources Folder.
