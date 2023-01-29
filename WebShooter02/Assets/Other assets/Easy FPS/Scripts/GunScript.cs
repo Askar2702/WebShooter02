@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TMPro;
 //using UnityStandardAssets.ImageEffects;
 
 public enum GunStyles
 {
 	nonautomatic,automatic
 }
+
 public class GunScript : MonoBehaviour 
 {
 	[Tooltip("Selects type of waepon to shoot rapidly or one bullet per click.")]
@@ -113,11 +115,13 @@ public class GunScript : MonoBehaviour
 
 		MeeleAnimationsStates ();
 
+		UpdateBulletsDisplay();
+
 		/*
 		 * Changing some values if we are aiming, like sensitity, zoom racion and position of the waepon.
 		 */
 		//if aiming
-		if(Input.GetAxis("Fire2") != 0 && !reloading && !meeleAttack)
+		if (Input.GetAxis("Fire2") != 0 && !reloading && !meeleAttack)
 		{
 			gunPrecision = gunPrecision_aiming;
 			recoilAmount_x = recoilAmount_x_;
@@ -568,10 +572,19 @@ public class GunScript : MonoBehaviour
 	 * Setting the number of bullets to the hud UI gameobject if there is one.
 	 * And drawing CrossHair from here.
 	 */
+	
 	[Tooltip("HUD bullets to display bullet count on screen. Will be find under name 'HUD_bullets' in scene.")]
-	public TextMesh HUD_bullets;
+	[SerializeField] TextMeshProUGUI HUD_bullets;
+
+	public void UpdateBulletsDisplay()
+    {
+		HUD_bullets = GameObject.Find("HUD_bullets").GetComponent<TextMeshProUGUI>();
+		HUD_bullets.text = $"{bulletsIHave} - {bulletsInTheGun}";
+	}
+
 	void OnGUI()
 	{
+		/*
 		if(!HUD_bullets)
 		{
 			try
@@ -587,9 +600,11 @@ public class GunScript : MonoBehaviour
         {
 			HUD_bullets.text = bulletsIHave.ToString() + " - " + bulletsInTheGun.ToString();
 		}
+		*/
 
 		DrawCrosshair();
 	}
+	
 
 	[Header("Crosshair properties")]
 	public Texture horizontal_crosshair, vertical_crosshair;
