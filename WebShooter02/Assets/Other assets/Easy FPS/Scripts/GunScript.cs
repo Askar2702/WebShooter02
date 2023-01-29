@@ -594,7 +594,7 @@ public class GunScript : MonoBehaviour
 	[Header("Crosshair properties")]
 	public Texture horizontal_crosshair, vertical_crosshair;
 	public Vector2 top_pos_crosshair, bottom_pos_crosshair, left_pos_crosshair, right_pos_crosshair;
-	public Vector2 size_crosshair_vertical = new Vector2(1,1), size_crosshair_horizontal = new Vector2(1,1);
+	public Vector2 size_crosshair_vertical = new Vector2(1, 1), size_crosshair_horizontal = new Vector2(1, 1);
 	[HideInInspector]
 	public Vector2 expandValues_crosshair;
 	private float fadeout_value = 1;
@@ -620,11 +620,11 @@ public class GunScript : MonoBehaviour
 	//#####		RETURN THE SIZE AND POSITION for GUI images ##################
 	private float position_x(float var)
 	{
-		return Screen.width * var / 100;
+		return Screen.width * var / 250;
 	}
 	private float position_y(float var)
 	{
-		return Screen.height * var / 100;
+		return Screen.height * var / 250;
 	}
 	private float size_x(float var)
 	{
