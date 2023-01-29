@@ -1136,6 +1136,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9201215126271909990, guid: 15177b1df628b564f993bc27de8f336c, type: 3}
+      propertyPath: damageBostCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201215126271909990, guid: 15177b1df628b564f993bc27de8f336c, type: 3}
+      propertyPath: speedBoostCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201215126271909990, guid: 15177b1df628b564f993bc27de8f336c, type: 3}
+      propertyPath: speedMultiplier
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201215126271909990, guid: 15177b1df628b564f993bc27de8f336c, type: 3}
+      propertyPath: fireRateBoostCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201215126271909990, guid: 15177b1df628b564f993bc27de8f336c, type: 3}
+      propertyPath: fireRateMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201215126271909990, guid: 15177b1df628b564f993bc27de8f336c, type: 3}
+      propertyPath: walkAnimationSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201215126271909990, guid: 15177b1df628b564f993bc27de8f336c, type: 3}
+      propertyPath: gunDamageMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201215126271909990, guid: 15177b1df628b564f993bc27de8f336c, type: 3}
+      propertyPath: jumpForceMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15177b1df628b564f993bc27de8f336c, type: 3}
 --- !u!1001 &3118841606084917525

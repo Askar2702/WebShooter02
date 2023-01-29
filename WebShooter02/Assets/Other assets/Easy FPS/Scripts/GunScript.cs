@@ -39,8 +39,6 @@ public class GunScript : MonoBehaviour
 	 */
 	void Awake()
 	{
-
-
 		mls = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseLookScript>();
 		player = mls.transform;
 		mainCamera = mls.myCamera;
@@ -57,11 +55,9 @@ public class GunScript : MonoBehaviour
 
 		rotationLastY = mls.currentYRotation;
 		rotationLastX= mls.currentCameraXRotation;
-
 	}
 
-
-	[HideInInspector]
+    [HideInInspector]
 	public Vector3 currentGunPosition;
 	[Header("Gun Positioning")]
 	[Tooltip("Vector 3 position from player SETUP for NON AIMING values")]
@@ -357,7 +353,9 @@ public class GunScript : MonoBehaviour
 	[Tooltip("Bullet prefab that this waepon will shoot.")]
 	public GameObject bullet;
 	[Tooltip("Rounds per second if weapon is set to automatic rafal.")]
-	public float roundsPerSecond;
+
+	public float RoundsPerSecond;
+
 	private float waitTillNextFire;
 	/*
 	 * Checking if the gun is automatic or nonautomatic and accordingly runs the ShootMethod();.
@@ -381,7 +379,7 @@ public class GunScript : MonoBehaviour
 				}
 			}
 		}
-		waitTillNextFire -= roundsPerSecond * Time.deltaTime;
+		waitTillNextFire -= RoundsPerSecond * Time.deltaTime;
 	}
 
 
@@ -447,7 +445,7 @@ public class GunScript : MonoBehaviour
 	private GameObject holdFlash;
 	private GameObject holdSmoke;
 
-	[SerializeField] float gunDamage = 50f;
+	public float gunDamage = 10f;
 	/*
 	 * Called from Shooting();
 	 * Creates bullets and muzzle flashes and calls for Recoil.
@@ -662,6 +660,11 @@ public class GunScript : MonoBehaviour
 				StartCoroutine("Reload_Animation");
 			}
 		}
+	}
+
+	public void IncreaseSpeedAnimation(int speedMultiplier)
+    {
+		
 	}
 
 	[Header("Animation names")]

@@ -10,7 +10,7 @@ public class GunInventory : MonoBehaviour {
 	[Tooltip("Current weapon gameObject.")]
 	public GameObject currentGun;
 	private Animator currentHAndsAnimator;
-	private int currentGunCounter = 0;
+	//private int currentGunCounter = 0;
 
 	[Tooltip("Put Strings of weapon objects from Resources Folder.")]
 	public List<string> gunsIHave = new List<string>();
