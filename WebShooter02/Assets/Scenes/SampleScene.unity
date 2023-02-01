@@ -1997,6 +1997,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 3381418468200185087, guid: 102099d4b0d2a994ba20e1693f407897,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2047,6 +2048,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of 3668fa2c (Написана логика применения бустов)
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 102099d4b0d2a994ba20e1693f407897, type: 3}
 --- !u!1001 &3611000299927246004

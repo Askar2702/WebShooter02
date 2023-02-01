@@ -31,8 +31,8 @@ public class BoostBank : MonoBehaviour
 
     bool damageBoostIsActive = false;
     bool fireRateBoostIsActive = false;
-    bool speedBoostIsActive = false;   
-    
+    bool speedBoostIsActive = false;
+
     private void Update()
     {
         DamageBoost();
@@ -47,7 +47,7 @@ public class BoostBank : MonoBehaviour
         gunScript = FindObjectOfType<GunScript>();
 
         if (Input.GetKeyDown(KeyCode.Alpha1) && damageBostCount > 0 && damageBoostIsActive != true)
-        {            
+        {
             gunScript.gunDamage = gunScript.gunDamage * gunDamageMultiplier;
 
             damageBoostIsActive = true;
@@ -91,7 +91,7 @@ public class BoostBank : MonoBehaviour
             {
                 gunScript.RoundsPerSecond = gunScript.RoundsPerSecond - fireRateMultiplier;
 
-                fireRateBoostIsActive = false;                
+                fireRateBoostIsActive = false;
 
                 fireRateBoostTime = 0;
             }
@@ -128,7 +128,7 @@ public class BoostBank : MonoBehaviour
         }
     }
 
-    public void AddDamageBoost() 
+    public void AddDamageBoost()
     {
         damageBostCount++;
     }

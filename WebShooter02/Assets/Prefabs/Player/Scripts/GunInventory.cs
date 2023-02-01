@@ -2,11 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum MenuStyle{
-	horizontal,vertical
+public enum MenuStyle
+{
+	horizontal, vertical
 }
 
-public class GunInventory : MonoBehaviour {
+public class GunInventory : MonoBehaviour
+{
 	[Tooltip("Current weapon gameObject.")]
 	public GameObject currentGun;
 	private Animator currentHAndsAnimator;
@@ -24,21 +26,23 @@ public class GunInventory : MonoBehaviour {
 	 * Calling the method that will update the icons of our guns if we carry any upon start.
 	 * Also will spawn a weapon upon start.
 	 */
-	void Awake(){
+	void Awake()
+	{
 		StartCoroutine("UpdateIconsFromResources");
 
-		StartCoroutine ("SpawnWeaponUponStart");//to start with a gun
+		StartCoroutine("SpawnWeaponUponStart");//to start with a gun
 
 		if (gunsIHave.Count == 0)
-			print ("No guns in the inventory");
+			print("No guns in the inventory");
 	}
 
 	/*
 	*Waits some time then calls for a waepon spawn
 	*/
-	IEnumerator SpawnWeaponUponStart(){
-		yield return new WaitForSeconds (0.5f);
-		StartCoroutine("Spawn",0);
+	IEnumerator SpawnWeaponUponStart()
+	{
+		yield return new WaitForSeconds(0.5f);
+		StartCoroutine("Spawn", 0);
 	}
 
 	/* 
@@ -46,7 +50,8 @@ public class GunInventory : MonoBehaviour {
 	 * and at some point we will change the switchWeaponCoolDown to a negative value so we have to wait until it
 	 * overcomes 0.0f. 
 	 */
-	void Update(){
+	void Update()
+	{
 
 		switchWeaponCooldown += 1 * Time.deltaTime;
 		/*
@@ -64,12 +69,14 @@ public class GunInventory : MonoBehaviour {
 	 * So if the gun prefab is called "Sniper_Piper" the corresponding image must be located in the location form previous,
 	 * with the name "Sniper_Piper_img".
 	 */
-	IEnumerator UpdateIconsFromResources(){
-		yield return new WaitForEndOfFrame ();
+	IEnumerator UpdateIconsFromResources()
+	{
+		yield return new WaitForEndOfFrame();
 
 		icons = new Texture[gunsIHave.Count];
-		for(int i = 0; i < gunsIHave.Count; i++){
-			icons[i] = (Texture) Resources.Load("Weap_Icons/" + gunsIHave[i].ToString() + "_img");
+		for (int i = 0; i < gunsIHave.Count; i++)
+		{
+			icons[i] = (Texture)Resources.Load("Weap_Icons/" + gunsIHave[i].ToString() + "_img");
 		}
 
 	}
@@ -124,24 +131,28 @@ public class GunInventory : MonoBehaviour {
 	 * This method is called from Create_Weapon() upon pressing arrow up/down or scrolling the mouse wheel,
 	 * It will check if we carry a gun and destroy it, and its then going to load a gun prefab from our Resources Folder.
 	 */
-	IEnumerator Spawn(int _redniBroj){
+	IEnumerator Spawn(int _redniBroj)
+	{
 		if (weaponChanging)
-			weaponChanging.Play ();
+			weaponChanging.Play();
 		else
-			print ("Missing Weapon Changing music clip.");
-		if(currentGun){
-			if(currentGun.name.Contains("Gun")){
+			print("Missing Weapon Changing music clip.");
+		if (currentGun)
+		{
+			if (currentGun.name.Contains("Gun"))
+			{
 
 				currentHAndsAnimator.SetBool("changingWeapon", true);
 
 				yield return new WaitForSeconds(0.8f);//0.8 time to change waepon, but since there is no change weapon animation there is no need to wait fo weapon taken down
 				Destroy(currentGun);
 
-				GameObject resource = (GameObject) Resources.Load(gunsIHave[_redniBroj].ToString());
-				currentGun = (GameObject) Instantiate(resource, transform.position, /*gameObject.transform.rotation*/Quaternion.identity);
+				GameObject resource = (GameObject)Resources.Load(gunsIHave[_redniBroj].ToString());
+				currentGun = (GameObject)Instantiate(resource, transform.position, /*gameObject.transform.rotation*/Quaternion.identity);
 				AssignHandsAnimator(currentGun);
 			}
-			else if(currentGun.name.Contains("Sword")){
+			else if (currentGun.name.Contains("Sword"))
+			{
 				currentHAndsAnimator.SetBool("changingWeapon", true);
 				yield return new WaitForSeconds(0.25f);//0.5f
 
@@ -150,14 +161,15 @@ public class GunInventory : MonoBehaviour {
 				yield return new WaitForSeconds(0.6f);//1
 				Destroy(currentGun);
 
-				GameObject resource = (GameObject) Resources.Load(gunsIHave[_redniBroj].ToString());
-				currentGun = (GameObject) Instantiate(resource, transform.position, /*gameObject.transform.rotation*/Quaternion.identity);
+				GameObject resource = (GameObject)Resources.Load(gunsIHave[_redniBroj].ToString());
+				currentGun = (GameObject)Instantiate(resource, transform.position, /*gameObject.transform.rotation*/Quaternion.identity);
 				AssignHandsAnimator(currentGun);
 			}
 		}
-		else{
-			GameObject resource = (GameObject) Resources.Load(gunsIHave[_redniBroj].ToString());
-			currentGun = (GameObject) Instantiate(resource, transform.position, /*gameObject.transform.rotation*/Quaternion.identity);
+		else
+		{
+			GameObject resource = (GameObject)Resources.Load(gunsIHave[_redniBroj].ToString());
+			currentGun = (GameObject)Instantiate(resource, transform.position, /*gameObject.transform.rotation*/Quaternion.identity);
 
 			AssignHandsAnimator(currentGun);
 		}
@@ -169,8 +181,10 @@ public class GunInventory : MonoBehaviour {
 	/*
 	* Assigns Animator to the script so we can use it in other scripts of a current gun.
 	*/
-	void AssignHandsAnimator(GameObject _currentGun){
-		if(_currentGun.name.Contains("Gun")){
+	void AssignHandsAnimator(GameObject _currentGun)
+	{
+		if (_currentGun.name.Contains("Gun"))
+		{
 			currentHAndsAnimator = currentGun.GetComponent<GunScript>().handsAnimator;
 		}
 	}
@@ -179,7 +193,7 @@ public class GunInventory : MonoBehaviour {
 	 * Unity buil-in method to draw GUI.
 	 * From here I am listing thourhg guns I have and drawing corresponding images on the sceen.
 	 */
-	
+
 	/*
 	void OnGUI(){
 
@@ -242,15 +256,17 @@ public class GunInventory : MonoBehaviour {
 	/*
 	 * Call this method when player dies.
 	 */
-	public void DeadMethod(){
-		Destroy (currentGun);
-		Destroy (this);
+	public void DeadMethod()
+	{
+		Destroy(currentGun);
+		Destroy(this);
 	}
 
 
 	//#####		RETURN THE SIZE AND POSITION for GUI images
 	//(we pass in the percentage and it returns some number to appear in that percentage on the sceen) ##################
-	private float position_x(float var){
+	private float position_x(float var)
+	{
 		return Screen.width * var / 100;
 	}
 	private float position_y(float var)
@@ -265,7 +281,8 @@ public class GunInventory : MonoBehaviour {
 	{
 		return Screen.height * var / 100;
 	}
-	private Vector2 vec2(Vector2 _vec2){
+	private Vector2 vec2(Vector2 _vec2)
+	{
 		return new Vector2(Screen.width * _vec2.x / 100, Screen.height * _vec2.y / 100);
 	}
 	//######################################################
