@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
         healthBar.fillAmount = currentHealth / maxHealth;
 
         if (currentHealth <= 0)
@@ -26,6 +27,8 @@ public class PlayerHealth : MonoBehaviour
     public void RestoreHealth()
     {
         currentHealth = maxHealth;
+
+        healthBar.fillAmount = currentHealth / maxHealth;
     }
 
     private void OnCollisionEnter(Collision collision)
