@@ -313,7 +313,7 @@
 "Assets/BoostBank/BoostBank.cs"
 "Assets/Other assets/Easy FPS/Scripts/BulletScript.cs"
 "Assets/Other assets/Easy FPS/Scripts/DestroyAfterTimeParticle.cs"
-"Assets/Other assets/Easy FPS/Scripts/GunScript.cs"
+"Assets/Other assets/Easy FPS/Scripts/PlayerMovementScript.cs"
 "Assets/Prefabs/Enemy/Scripts/EnemyHealth.cs"
 "Assets/Prefabs/Enemy/Scripts/EnemyWeapon.cs"
 "Assets/Prefabs/Pickups/Ammo Pickup/AmmoPickup.cs"
@@ -322,9 +322,9 @@
 "Assets/Prefabs/Pickups/HealthPickup/HealthPickup.cs"
 "Assets/Prefabs/Pickups/SpeedPickup/SpeedBoostPickup.cs"
 "Assets/Prefabs/Player/Scripts/GunInventory.cs"
+"Assets/Prefabs/Player/Scripts/GunScript.cs"
 "Assets/Prefabs/Player/Scripts/MouseLookScript.cs"
 "Assets/Prefabs/Player/Scripts/PlayerHealth.cs"
-"Assets/Prefabs/Player/Scripts/PlayerMovementScript.cs"
 -langversion:8.0
 
 /deterministic
