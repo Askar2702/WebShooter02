@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMovementScript : MonoBehaviour {
+public class PlayerMovementScript : MonoBehaviour 
+{
 	Rigidbody rb;
 
 	[Tooltip("Current players speed")]
@@ -18,7 +20,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	 * Getting the Players rigidbody component.
 	 * And grabbing the mainCamera from Players child transform.
 	 */
-	void Awake(){
+	void Awake()
+	{
 		rb = GetComponent<Rigidbody>();
 		cameraMain = transform.Find("Main Camera").transform;
 		bulletSpawn = cameraMain.Find ("BulletSpawn").transform;
@@ -30,7 +33,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	/*
 	* Raycasting for meele attacks and input movement handling here.
 	*/
-	void FixedUpdate(){
+	void FixedUpdate()
+	{
 		RaycastForMeleeAttacks ();
 
 		PlayerMovementLogic ();
@@ -39,7 +43,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	* Accordingly to input adds force and if magnitude is bigger it will clamp it.
 	* If player leaves keys it will deaccelerate
 	*/
-	void PlayerMovementLogic(){
+	void PlayerMovementLogic()
+	{
 		currentSpeed = rb.velocity.magnitude;
 		horizontalMovement = new Vector2 (rb.velocity.x, rb.velocity.z);
 		if (horizontalMovement.magnitude > maxSpeed){
@@ -51,36 +56,39 @@ public class PlayerMovementScript : MonoBehaviour {
 			rb.velocity.y,
 			horizontalMovement.y
 		);
-		if (grounded){
+		if (grounded)
+		{
 			rb.velocity = Vector3.SmoothDamp(rb.velocity,
 				new Vector3(0,rb.velocity.y,0),
 				ref slowdownV,
 				deaccelerationSpeed);
 		}
 
-		if (grounded) {
+		if (grounded == true) 
+		{
 			rb.AddRelativeForce (Input.GetAxis ("Horizontal") * accelerationSpeed * Time.deltaTime, 0, Input.GetAxis ("Vertical") * accelerationSpeed * Time.deltaTime);
-		} else {
-			rb.AddRelativeForce (Input.GetAxis ("Horizontal") * accelerationSpeed / 2 * Time.deltaTime, 0, Input.GetAxis ("Vertical") * accelerationSpeed / 2 * Time.deltaTime);
-
-		}
+		} 		
 		/*
 		 * Slippery issues fixed here
 		 */
-		if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
+		if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) 
+		{
 			deaccelerationSpeed = 0.5f;
-		} else {
+		} else 
+		{
 			deaccelerationSpeed = 0.1f;
 		}
 	}
 	/*
 	* Handles jumping and ads the force and sounds.
 	*/
-	void Jumping(){
-		if (Input.GetKeyDown (KeyCode.Space) && grounded) {
+	void Jumping()
+	{
+		if (Input.GetKeyDown (KeyCode.Space) && grounded) 
+		{
 			rb.AddRelativeForce (Vector3.up * jumpForce);
 			if (_jumpSound)
-				_jumpSound.Play ();
+				_jumpSound.Play();
 			else
 				print ("Missig jump sound.");
 			_walkSound.Stop ();
@@ -90,7 +98,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	/*
 	* Update loop calling other stuff
 	*/
-	void Update(){
+	void Update()
+	{
 		
 
 		Jumping ();
@@ -105,35 +114,50 @@ public class PlayerMovementScript : MonoBehaviour {
 	/*
 	* Checks if player is grounded and plays the sound accorindlgy to his speed
 	*/
-	void WalkingSound(){
-		if (_walkSound && _runSound) {
-			if (RayCastGrounded ()) { //for walk sounsd using this because suraface is not straigh			
-				if (currentSpeed > 1) {
+	void WalkingSound()
+	{
+		if (_walkSound && _runSound) 
+		{
+			if (RayCastGrounded()) 
+			{ //for walk sounsd using this because suraface is not straigh			
+				if (currentSpeed > 1) 
+				{
 					//				print ("unutra sam");
-					if (maxSpeed == 3) {
+					if (maxSpeed == 3) 
+					{
 						//	print ("tu sem");
-						if (!_walkSound.isPlaying) {
+						if (!_walkSound.isPlaying) 
+						{
 							//	print ("playam hod");
 							_walkSound.Play ();
 							_runSound.Stop ();
 						}					
-					} else if (maxSpeed == 5) {
+					} 
+					else if (maxSpeed == 5) 					
+					{
 						//	print ("NE tu sem");
 
-						if (!_runSound.isPlaying) {
+						if (!_runSound.isPlaying) 
+						{
 							_walkSound.Stop ();
 							_runSound.Play ();
 						}
 					}
-				} else {
+				} 
+				else 
+				{
 					_walkSound.Stop ();
 					_runSound.Stop ();
 				}
-			} else {
+			} 
+			else 
+			{
 				_walkSound.Stop ();
 				_runSound.Stop ();
 			}
-		} else {
+		} 
+		else 
+		{
 			print ("Missing walk and running sounds.");
 		}
 
@@ -142,15 +166,19 @@ public class PlayerMovementScript : MonoBehaviour {
 	* Raycasts down to check if we are grounded along the gorunded method() because if the
 	* floor is curvy it will go ON/OFF constatly this assures us if we are really grounded
 	*/
-	private bool RayCastGrounded(){
+	private bool RayCastGrounded()
+	{
 		RaycastHit groundedInfo;
-		if(Physics.Raycast(transform.position, transform.up *-1f, out groundedInfo, 1, ~ignoreLayer)){
+		if(Physics.Raycast(transform.position, transform.up *-1f, out groundedInfo, 1, ~ignoreLayer))
+		{
 			Debug.DrawRay (transform.position, transform.up * -1f, Color.red, 0.0f);
-			if(groundedInfo.transform != null){
+			if(groundedInfo.transform != null)
+			{
 				//print ("vracam true");
 				return true;
 			}
-			else{
+			else
+			{
 				//print ("vracam false");
 				return false;
 			}
@@ -163,11 +191,14 @@ public class PlayerMovementScript : MonoBehaviour {
 	/*
 	* If player toggle the crouch it will scale the player to appear that is crouching
 	*/
-	void Crouching(){
-		if(Input.GetKey(KeyCode.C)){
+	void Crouching()
+	{
+		if(Input.GetKey(KeyCode.C))
+		{
 			transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1,0.6f,1), Time.deltaTime * 15);
 		}
-		else{
+		else
+		{
 			transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1,1,1), Time.deltaTime * 15);
 
 		}
@@ -190,9 +221,12 @@ public class PlayerMovementScript : MonoBehaviour {
 	* checks if our player is contacting the ground in the angle less than 60 degrees
 	*	if it is, set groudede to true
 	*/
-	void OnCollisionStay(Collision other){
-		foreach(ContactPoint contact in other.contacts){
-			if(Vector2.Angle(contact.normal,Vector3.up) < 60){
+	void OnCollisionStay(Collision other)
+	{
+		foreach(ContactPoint contact in other.contacts)
+		{
+			if((Vector2.Angle(contact.normal,Vector3.up) < 180) && (other.transform.tag != "Wall"))
+			{
 				grounded = true;
 			}
 		}
@@ -226,17 +260,17 @@ public class PlayerMovementScript : MonoBehaviour {
 
 
 	public bool been_to_meele_anim = false;
-	private void RaycastForMeleeAttacks(){
-
-
-
-
-		if (meleeAttack_cooldown > -5) {
+	[SerializeField] float meleeDamage = 30f;
+	private void RaycastForMeleeAttacks()
+	{
+		if (meleeAttack_cooldown > -5) 
+		{
 			meleeAttack_cooldown -= 1 * Time.deltaTime;
 		}
 
 
-		if (GetComponent<GunInventory> ().currentGun) {
+		if (GetComponent<GunInventory> ().currentGun) 
+		{
 			if (GetComponent<GunInventory> ().currentGun.GetComponent<GunScript> ()) 
 				currentWeapo = "gun";
 		}
@@ -264,11 +298,14 @@ public class PlayerMovementScript : MonoBehaviour {
 		Debug.DrawRay (ray8.origin, ray8.direction, Color.yellow);
 		Debug.DrawRay (ray9.origin, ray9.direction, Color.yellow);
 
-		if (GetComponent<GunInventory> ().currentGun) {
-			if (GetComponent<GunInventory> ().currentGun.GetComponent<GunScript> ().meeleAttack == false) {
+		if (GetComponent<GunInventory> ().currentGun)
+		{
+			if (GetComponent<GunInventory> ().currentGun.GetComponent<GunScript> ().meeleAttack == false) 
+			{
 				been_to_meele_anim = false;
 			}
-			if (GetComponent<GunInventory> ().currentGun.GetComponent<GunScript> ().meeleAttack == true && been_to_meele_anim == false) {
+			if (GetComponent<GunInventory> ().currentGun.GetComponent<GunScript> ().meeleAttack == true && been_to_meele_anim == false) 
+			{
 				been_to_meele_anim = true;
 				//	if (isRunning == false) {
 				StartCoroutine ("MeeleAttackWeaponHit");
@@ -282,15 +319,21 @@ public class PlayerMovementScript : MonoBehaviour {
 	 *Method that is called if the waepon hit animation has been triggered the first time via Q input
 	 *and if is, it will search for target and make damage
 	 */
-	IEnumerator MeeleAttackWeaponHit(){
+	IEnumerator MeeleAttackWeaponHit()
+	{
 		if (Physics.Raycast (ray1, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray2, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray3, out hitInfo, 2f, ~ignoreLayer)
 			|| Physics.Raycast (ray4, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray5, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray6, out hitInfo, 2f, ~ignoreLayer)
-			|| Physics.Raycast (ray7, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray8, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray9, out hitInfo, 2f, ~ignoreLayer)) {
+			|| Physics.Raycast (ray7, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray8, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray9, out hitInfo, 2f, ~ignoreLayer)) 
+		{
 			//Debug.DrawRay (bulletSpawn.position, bulletSpawn.forward + (bulletSpawn.right*0.2f), Color.green, 0.0f);
-			if (hitInfo.transform.tag=="Dummie") {
+			if (hitInfo.transform.tag=="Dummie") 
+			{
 				Transform _other = hitInfo.transform.root.transform;
-				if (_other.transform.tag == "Dummie") {
-					print ("hit a dummie");
+
+				EnemyHealth enemyHealth = _other.GetComponent<EnemyHealth>();
+				if (enemyHealth != null) 
+				{
+					enemyHealth.TakeDamage(meleeDamage);
 				}
 				InstantiateBlood(hitInfo,false);
 			}
@@ -306,9 +349,11 @@ public class PlayerMovementScript : MonoBehaviour {
 	* Upon hitting enemy it calls this method, gives it raycast hit info 
 	* and at that position it creates our blood prefab.
 	*/
-	void InstantiateBlood (RaycastHit _hitPos,bool swordHitWithGunOrNot) {		
+	void InstantiateBlood (RaycastHit _hitPos,bool swordHitWithGunOrNot) 
+	{		
 
-		if (currentWeapo == "gun") {
+		if (currentWeapo == "gun") 
+		{
 			GunScript.HitMarkerSound ();
 
 			if (_hitSound)
@@ -316,7 +361,8 @@ public class PlayerMovementScript : MonoBehaviour {
 			else
 				print ("Missing hit sound");
 			
-			if (!swordHitWithGunOrNot) {
+			if (!swordHitWithGunOrNot) 
+			{
 				if (bloodEffect)
 					Instantiate (bloodEffect, _hitPos.point, Quaternion.identity);
 				else

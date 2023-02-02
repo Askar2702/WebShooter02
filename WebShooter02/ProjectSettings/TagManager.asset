@@ -11,6 +11,7 @@ TagManager:
   - Dummie
   - AmmoPickup
   - HUD_bullets
+  - Wall
   layers:
   - Default
   - TransparentFX

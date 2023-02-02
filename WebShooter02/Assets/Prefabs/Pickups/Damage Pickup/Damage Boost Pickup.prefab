@@ -69,6 +69,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Pickup_Ammo_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7297525992272083963, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298855849597178535, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.012000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299129589927310373, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.012000024
+      objectReference: {fileID: 0}
     - target: {fileID: 7301619777009032483, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -79,7 +91,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7301619777009032483, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.322
       objectReference: {fileID: 0}
     - target: {fileID: 7301619777009032483, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -113,6 +125,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7301736542995113151, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.012
+      objectReference: {fileID: 0}
     - target: {fileID: 7459237319315441243, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 1.58
@@ -120,6 +136,18 @@ PrefabInstance:
     - target: {fileID: 7459237319315441243, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
       propertyPath: InitialModule.startSize.minScalar
       value: 1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460131132113935555, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460131132113935555, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.07366451
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460131132113935555, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec55a024fd75fa04ebfae38ab9bef1b8, type: 3}
