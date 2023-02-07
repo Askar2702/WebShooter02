@@ -12,6 +12,7 @@ TagManager:
   - AmmoPickup
   - HUD_bullets
   - Wall
+  - Floor
   layers:
   - Default
   - TransparentFX

@@ -320,6 +320,7 @@
 "Assets/Prefabs/Pickups/FireRatePickup/FireRatePickup.cs"
 "Assets/Prefabs/Pickups/HealthPickup/HealthPickup.cs"
 "Assets/Prefabs/Pickups/SpeedPickup/SpeedBoostPickup.cs"
+"Assets/Prefabs/Player/Scripts/DeathHandler.cs"
 "Assets/Prefabs/Player/Scripts/GunInventory.cs"
 "Assets/Prefabs/Player/Scripts/GunScript.cs"
 "Assets/Prefabs/Player/Scripts/MouseLookScript.cs"

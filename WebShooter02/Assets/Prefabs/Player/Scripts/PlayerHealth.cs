@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] Image healthBar;
 
-
+    DeathHandler deathHandler;
 
     public void TakeDamage(float damage)
     {
@@ -19,8 +19,9 @@ public class PlayerHealth : MonoBehaviour
         healthBar.fillAmount = currentHealth / maxHealth;
 
         if (currentHealth <= 0)
-        {
-            Destroy(gameObject);           
+        {     
+            deathHandler = FindObjectOfType<DeathHandler>();
+            deathHandler.HandleDeath();
         }
     }
 
@@ -31,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
         healthBar.fillAmount = currentHealth / maxHealth;
     }
 
+    // Тестовая часть
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Dummie")
@@ -38,5 +40,5 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(10);
         }
 
-    }          
+    }        
 }

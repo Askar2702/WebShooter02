@@ -67,7 +67,11 @@ public class PlayerMovementScript : MonoBehaviour
 		if (grounded == true) 
 		{
 			rb.AddRelativeForce (Input.GetAxis ("Horizontal") * accelerationSpeed * Time.deltaTime, 0, Input.GetAxis ("Vertical") * accelerationSpeed * Time.deltaTime);
-		} 		
+		} 
+		else 
+		{
+			rb.AddRelativeForce (Input.GetAxis ("Horizontal") * accelerationSpeed / 2 * Time.deltaTime, 0, Input.GetAxis ("Vertical") * accelerationSpeed / 2 * Time.deltaTime);
+		}
 		/*
 		 * Slippery issues fixed here
 		 */
@@ -225,16 +229,16 @@ public class PlayerMovementScript : MonoBehaviour
 	{
 		foreach(ContactPoint contact in other.contacts)
 		{
-			if((Vector2.Angle(contact.normal,Vector3.up) < 180) && (other.transform.tag != "Wall"))
+			if((Vector2.Angle(contact.normal,Vector3.up) < 180) && (other.transform.tag == "Floor"))
 			{
 				grounded = true;
-			}
+			}			
 		}
 	}
 	/*
 	* On collision exit set grounded to false
 	*/
-	void OnCollisionExit ()
+	void OnCollisionExit()
 	{
 		grounded = false;
 	}
