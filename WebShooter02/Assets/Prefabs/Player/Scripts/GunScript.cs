@@ -449,9 +449,8 @@ public class GunScript : MonoBehaviour
 	}
 
 	[Tooltip("Array of muzzel flashes, randmly one will appear after each bullet.")]
-	public GameObject[] muzzelFlash;
+	[SerializeField] ParticleSystem muzzelFlash;
 	[Tooltip("Place on the gun where muzzel flash will appear.")]
-	public GameObject muzzelSpawn;
 	private GameObject holdFlash;
 	private GameObject holdSmoke;
 
@@ -477,8 +476,7 @@ public class GunScript : MonoBehaviour
 					print("Missing the bullet prefab");
 				}
 
-				holdFlash = Instantiate(muzzelFlash[randomNumberForMuzzelFlash], muzzelSpawn.transform.position /*- muzzelPosition*/, muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90)) as GameObject;
-				holdFlash.transform.parent = muzzelSpawn.transform;
+				muzzelFlash.Play();
 
 				if (shoot_sound_source)
 				{
