@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class BoostBank : MonoBehaviour
 {
     [Header("Damage Boost")]
-    [SerializeField] int damageBostCount = 0;
+    [SerializeField] int damageBoostCount = 0;
     [SerializeField] float gunDamageMultiplier = 3f;
 
     [SerializeField] float damageBoostActiveTime = 10f;
@@ -26,6 +26,11 @@ public class BoostBank : MonoBehaviour
     [SerializeField] float speedBoostActiveTime = 10f;
     public float speedBoostTime = 0;
 
+
+    TextMeshProUGUI damageBoostText;
+    TextMeshProUGUI speedBoostText;
+    TextMeshProUGUI fireRateBoostText;
+
     GunScript gunScript;
     PlayerMovementScript playerMovementScript;
 
@@ -40,19 +45,24 @@ public class BoostBank : MonoBehaviour
         FireRateBoost();
 
         SpeedBoost();
+
+        // Bost display update
+        DamageBoostDisplayUpdate();
+        SpeedBoostDisplayUpdate();
+        FireRateBoostDisplayUpdate();
     }
 
     private void DamageBoost()
     {
         gunScript = FindObjectOfType<GunScript>();
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && damageBostCount > 0 && damageBoostIsActive != true)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && damageBoostCount > 0 && damageBoostIsActive != true)
         {
             gunScript.gunDamage = gunScript.gunDamage * gunDamageMultiplier;
 
             damageBoostIsActive = true;
 
-            damageBostCount--;
+            damageBoostCount--;
         }
 
         if (damageBoostIsActive == true)
@@ -130,7 +140,7 @@ public class BoostBank : MonoBehaviour
 
     public void AddDamageBoost()
     {
-        damageBostCount++;
+        damageBoostCount++;
     }
 
     public void AddFireRateBoost()
@@ -141,5 +151,23 @@ public class BoostBank : MonoBehaviour
     public void AddSpeedBoost()
     {
         speedBoostCount++;
+    }
+
+    public void DamageBoostDisplayUpdate()
+    {
+        damageBoostText = GameObject.Find("Damage Boost Text").GetComponent<TextMeshProUGUI>();
+        damageBoostText.text = $"{damageBoostCount}";
+    }
+
+    public void SpeedBoostDisplayUpdate()
+    {
+        speedBoostText = GameObject.Find("Speed Boost Text").GetComponent<TextMeshProUGUI>();
+        speedBoostText.text = $"{speedBoostCount}";
+    }
+
+    public void FireRateBoostDisplayUpdate()
+    {
+        fireRateBoostText = GameObject.Find("Fire Rate Boost Text").GetComponent<TextMeshProUGUI>();
+        fireRateBoostText.text = $"{fireRateBoostCount}";
     }
 }

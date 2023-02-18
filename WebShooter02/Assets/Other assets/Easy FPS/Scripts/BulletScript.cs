@@ -37,23 +37,22 @@ public class BulletScript : MonoBehaviour
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(damage);
-                CreateHitImpact(enemyHealth, bloodEffect, damage);
+                CreateHitImpact(bloodEffect);
             }
             else
             {
-                CreateHitImpact(null, decalHitWall, damage);
+                CreateHitImpact(decalHitWall);
             }
-
-            Destroy(gameObject);
         }
 
         Destroy(gameObject, 0.1f);
     }
 
-    private void CreateHitImpact(EnemyHealth enemyHealth, GameObject hitEffect, float damage)
+    private void CreateHitImpact(GameObject hitEffect)
     {
-        Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+        GameObject hitGo = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
+        Destroy(hitGo, 0.1f);
         Destroy(gameObject);
     }
 }
