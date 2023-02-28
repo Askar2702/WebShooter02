@@ -30,7 +30,7 @@ public class BulletScript : MonoBehaviour
 
     private void ProccessRaycast(float damage)
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, ~ignoreLayer))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, ~ignoreLayer)  )
         {
             EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
 
