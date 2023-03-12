@@ -329,6 +329,10 @@
 "Assets/Prefabs/Player/Scripts/MouseLookScript.cs"
 "Assets/Prefabs/Player/Scripts/PlayerHealth.cs"
 "Assets/Prefabs/Player/Scripts/PlayerMovementScript.cs"
+"Assets/Prefabs/Turret/Scripts/CannonRotate.cs"
+"Assets/Prefabs/Turret/Scripts/TurretAttack.cs"
+"Assets/Prefabs/Turret/Scripts/TurretRotate.cs"
+"Assets/Prefabs/Turret/Scripts/TurretSpawn.cs"
 -langversion:8.0
 
 /deterministic

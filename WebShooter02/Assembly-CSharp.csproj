@@ -69,6 +69,10 @@
     <Compile Include="Assets\BoostBank\BoostBank.cs" />
     <Compile Include="Assets\Prefabs\Pickups\FireRatePickup\FireRatePickup.cs" />
     <Compile Include="Assets\Prefabs\Player\Scripts\DeathHandler.cs" />
+    <Compile Include="Assets\Prefabs\Turret\Scripts\TurretSpawn.cs" />
+    <Compile Include="Assets\Prefabs\Turret\Scripts\TurretRotate.cs" />
+    <Compile Include="Assets\Prefabs\Turret\Scripts\CannonRotate.cs" />
+    <Compile Include="Assets\Prefabs\Turret\Scripts\TurretAttack.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Other assets\TextMesh Pro\Shaders\TMPro.cginc" />
